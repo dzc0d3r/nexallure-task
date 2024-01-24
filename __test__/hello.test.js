@@ -1,8 +1,7 @@
-import '@testing-library/jest-dom'
+import "@testing-library/jest-dom"
 
-
-describe('Hello tests', () => {
-    it('setup unit testing', () => {
-        console.log('all good')
-    })
+describe("Hello tests", () => {
+  it("setup unit testing", () => {
+    console.log("all good")
+  })
 })
