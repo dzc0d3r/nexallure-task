@@ -4,7 +4,7 @@
 
 @layer utilities {
   .h1 {
-    @apply text-xl font-bold uppercase text-black/80 md:text-3xl;
+    @apply text-lg font-bold uppercase text-black/80 md:text-3xl;
   }
 
   .h2 {
@@ -12,7 +12,7 @@
   }
 
   .btn {
-    @apply border-[.1rem] border-black/80 text-base capitalize;
+    @apply border-[.1rem] border-black/80 text-base capitalize md:min-w-full;
   }
 
   .footer-icons {
