@@ -7,7 +7,15 @@
     @apply text-xl font-bold uppercase text-black/80 md:text-3xl;
   }
 
+  .h2 {
+    @apply text-lg font-bold uppercase text-black/80 md:text-xl;
+  }
+
   .btn {
     @apply border-[.1rem] border-black/80 text-base capitalize;
+  }
+
+  .footer-icons {
+    @apply mx-2 my-5 text-xl text-black/80 transition-all duration-200 ease-in-out hover:scale-110 hover:cursor-pointer hover:text-slate-800 md:my-0;
   }
 }
