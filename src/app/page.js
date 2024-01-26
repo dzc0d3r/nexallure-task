@@ -1,9 +1,9 @@
-// import {CollectionCard} from "@/components/Collection"
+import { CollectionCard } from "@/components/Collection"
 import { Hero } from "@/components/Hero"
 
 export default async function Home() {
-  /*   const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`)
-    const collections = await data.json() */
+  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`)
+  const collections = await data.json()
 
   return (
     <main className="container mx-auto my-5 flex min-h-screen max-w-7xl flex-col  ">
@@ -14,11 +14,11 @@ export default async function Home() {
           collections
         </h2>
 
-        {/* <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
-          {collections?.map((collection) => (
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+          {collections.map((collection) => (
             <CollectionCard key={collection.id} {...collection} />
           ))}
-        </div> */}
+        </div>
       </section>
     </main>
   )
