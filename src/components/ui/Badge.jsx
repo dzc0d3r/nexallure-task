@@ -10,6 +10,8 @@ const badgeVariants = cva(
       variant: {
         default:
           "border-transparent bg-red-100 bg-opacity-64 text-black/50 shadow hover:bg-primary/80",
+        primary:
+          "border-transparent bg-teal-100 bg-opacity-64 text-black/50 shadow hover:bg-primary/80",
       },
       rounded: {
         default: "rounded-full",
