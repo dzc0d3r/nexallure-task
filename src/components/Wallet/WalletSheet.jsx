@@ -1,10 +1,11 @@
 "use client"
+
 import Image from "next/image"
 import { FaRegCopy, FaArrowCircleRight } from "react-icons/fa"
-
 import { useAuth } from "@/components/Providers/AuthProvider"
 import { Button } from "@/components/ui/Button"
 import Link from "next/link"
+
 const Wallet = () => {
   const { openWallet, setOpenWallet, user, nfts } = useAuth()
   return (
