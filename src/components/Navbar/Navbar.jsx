@@ -1,12 +1,10 @@
 "use client"
-
 import { Button } from "@/components/ui/Button"
 import { useAuth } from "@/components/Providers/AuthProvider"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Suspense } from "react"
 
-const Nav = () => {
+const Navbar = () => {
   const pathname = usePathname()
 
   const { user, setOpenWallet } = useAuth()
@@ -32,14 +30,6 @@ const Nav = () => {
         )}
       </div>
     </nav>
-  )
-}
-
-const Navbar = () => {
-  return (
-    <Suspense>
-      <Nav />
-    </Suspense>
   )
 }
 
