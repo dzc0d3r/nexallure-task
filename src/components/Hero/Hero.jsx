@@ -12,7 +12,7 @@ const Hero = () => {
           <h2 className="text-xl font-light text-black/50 md:text-3xl ">
             Night sky collection
           </h2>
-          <p className="text-3xl font-semibold capitalize text-black/80 md:text-6xl">
+          <p className="text-3xl font-semibold text-black/80 md:text-6xl">
             With the stars
           </p>
         </div>

@@ -4,6 +4,7 @@ import "./globals.css"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { AuthProvider } from "@/components/Providers"
+import { WalletSheet } from "@/components/Wallet"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -15,8 +16,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} relative`}>
         <AuthProvider>
+          <WalletSheet />
           <Navbar />
           {children}
           <Footer />

@@ -7,10 +7,10 @@ import { usePathname } from "next/navigation"
 const Navbar = () => {
   const pathname = usePathname()
 
-  const { user } = useAuth()
+  const { user, setOpenWallet } = useAuth()
   return (
     <nav
-      className={` sticky top-0 z-50 min-h-20 w-full items-center p-3 md:p-5 ${pathname == "/wallet" ? "bg-slate-200" : "bg-white"}`}
+      className={` sticky top-0 z-40 min-h-20 w-full items-center p-3 md:p-5 ${pathname == "/wallet" ? "bg-slate-200" : "bg-white"}`}
     >
       <div className="container mx-auto flex max-w-7xl items-center justify-between">
         <div className="p-5">
@@ -20,7 +20,9 @@ const Navbar = () => {
         </div>
 
         {user ? (
-          <Button>account</Button>
+          <Button variant="primary" onClick={() => setOpenWallet(true)}>
+            account
+          </Button>
         ) : (
           <Link href="wallet">
             <Button>connect wallet</Button>

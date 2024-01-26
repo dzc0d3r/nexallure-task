@@ -12,7 +12,7 @@
   }
 
   .btn {
-    @apply border-[.1rem] border-black/80 text-base capitalize md:min-w-full;
+    @apply border-[.1rem] border-black/80 text-base capitalize md:min-w-40;
   }
 
   .footer-icons {
