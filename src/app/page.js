@@ -1,4 +1,4 @@
-import { CollectionCard } from "@/components/Collection"
+// import {CollectionCard} from "@/components/Collection"
 import { Hero } from "@/components/Hero"
 
 export default async function Home() {
@@ -14,11 +14,11 @@ export default async function Home() {
           collections
         </h2>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+        {/* <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
           {collections?.map((collection) => (
             <CollectionCard key={collection.id} {...collection} />
           ))}
-        </div>
+        </div> */}
       </section>
     </main>
   )
