@@ -5,13 +5,14 @@ import { FaRegCopy, FaArrowCircleRight } from "react-icons/fa"
 import { useAuth } from "@/components/Providers/AuthProvider"
 import { Button } from "@/components/ui/Button"
 import Link from "next/link"
+import { SheetTrigger } from "../ui/Sheet"
 
 const Wallet = () => {
-  const { openWallet, setOpenWallet, user, nfts } = useAuth()
+  const { user, nfts } = useAuth()
   return (
     <div
-      className={`${openWallet ? "block" : "hidden"} absolute right-0 top-0 z-50 
-         mx-3 my-2 h-96 min-h-[37rem] w-72 rounded-xl border border-black/80 bg-white p-5 transition-all duration-300 ease-in-out`}
+      className={`mx-3 my-2 block
+         h-full w-full rounded-xl border border-black/80 bg-white p-5`}
     >
       <div className="mb-10 flex flex-row items-center justify-between">
         <div className="flex flex-row items-center gap-1">
@@ -26,10 +27,9 @@ const Wallet = () => {
           <FaRegCopy />
         </div>
 
-        <FaArrowCircleRight
-          onClick={() => setOpenWallet(false)}
-          className="text-2xl text-black/80 hover:cursor-pointer"
-        />
+        <SheetTrigger>
+          <FaArrowCircleRight className="text-2xl text-black/80 hover:cursor-pointer" />
+        </SheetTrigger>
       </div>
       <div className="flex flex-col gap-1 text-3xl text-black/90">
         <h3 className="text-base font-light capitalize text-black/50">
@@ -50,12 +50,10 @@ const Wallet = () => {
             <p className="text-center text-base font-light text-black/50">
               You don&apos;t have any NFTs
             </p>
-            <Link
-              onClick={() => setOpenWallet(false)}
-              className="text-center"
-              href="/"
-            >
-              <Button variant="primary"> start shopping</Button>
+            <Link className="text-center" href="/">
+              <SheetTrigger>
+                <Button variant="primary"> start shopping</Button>
+              </SheetTrigger>
             </Link>
           </div>
         ) : (
