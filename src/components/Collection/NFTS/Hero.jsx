@@ -9,13 +9,13 @@ const Hero = ({ name, description, image, artist }) => {
       <div className="flex flex-col items-center py-2 md:gap-1 md:py-5 lg:items-start">
         <Badge>trending now</Badge>
         <div className="my-2 py-5 ">
-          <p className="text-2xl font-semibold capitalize text-gray-700 md:text-3xl">
+          <p className="text-center text-lg font-semibold  capitalize text-gray-700 md:text-start md:text-3xl">
             collection
           </p>
-          <h2 className="text-xl font-bold text-black/85 md:mb-3 md:text-6xl">
+          <h2 className="text-center text-xl font-bold text-black/85 md:mb-3 md:text-start md:text-6xl">
             {name}
           </h2>
-          <p className="my-2 line-clamp-4 text-lg font-light text-black/80 md:text-xl">
+          <p className="my-2 line-clamp-4 text-center text-sm font-light text-black/80 md:text-start md:text-xl">
             {description}
           </p>
         </div>

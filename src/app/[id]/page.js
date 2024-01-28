@@ -1,4 +1,4 @@
-import { Hero } from "@/components/Collection"
+import { Hero, NFTCard } from "@/components/Collection"
 
 const Page = async ({ params }) => {
   const data = await fetch(
@@ -14,7 +14,23 @@ const Page = async ({ params }) => {
         image={trendingNFTs[0]?.image || collection.image}
         artist={collection.artist}
       />
-      {console.log(trendingNFTs)}
+
+      <section className="my-10 mt-5 flex flex-col p-5 md:gap-5">
+        <h2 className="mb-10 mt-3 text-4xl font-semibold  capitalize text-black/80">
+          NFTS
+        </h2>
+
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+          {collection.nfts.map((nft, index) => (
+            <NFTCard
+              key={index}
+              name={nft.name}
+              image={nft.image}
+              price={nft.price}
+            />
+          ))}
+        </div>
+      </section>
     </main>
   )
 }

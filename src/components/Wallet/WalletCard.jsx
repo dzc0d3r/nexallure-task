@@ -23,14 +23,15 @@ const wallets = [
 const WalletCard = () => {
   const { user, setUser } = useAuth()
   const handleWallet = (name, address) => {
-    setUser({
+    setUser((user) => ({
       ...user,
       wallet: {
         type: name,
         address: address,
         ballance: 0.129,
+        nfts: [],
       },
-    })
+    }))
   }
   return (
     <>
