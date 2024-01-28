@@ -1,3 +1,3 @@
 import CollectionCard from "./CollectionCard"
-
-export { CollectionCard }
+import Hero from "./NFTS/Hero"
+export { CollectionCard, Hero }

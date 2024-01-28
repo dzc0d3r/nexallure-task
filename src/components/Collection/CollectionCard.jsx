@@ -1,11 +1,27 @@
 import Image from "next/image"
 import { Badge } from "../ui/Badge"
 import { Artist } from "../Artist"
+import { FaArrowRight } from "react-icons/fa"
+import { Button } from "../ui/Button"
 
-const Card = ({ image, name, description, min_price, max_price, artist }) => {
+const Card = ({
+  image,
+  name,
+  description,
+  min_price,
+  max_price,
+  artist,
+  id,
+}) => {
   return (
     <div className="group flex min-h-[25rem] flex-col items-center rounded-3xl  px-5 py-7 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:cursor-pointer lg:items-start">
       <div className="relative flex h-56 w-full justify-center">
+        <div className="animate-in fade-in zoom-in absolute z-10 hidden h-full w-full place-content-center duration-500 group-hover:grid">
+          <Button className="flex flex-row items-center gap-2">
+            See collection
+            <FaArrowRight />
+          </Button>
+        </div>
         <Image
           src={image}
           alt="with the stars"
@@ -27,7 +43,9 @@ const Card = ({ image, name, description, min_price, max_price, artist }) => {
           {" "}
           price range : {min_price} - {max_price} BTC{" "}
         </p>
-        <p className="text-sm font-light text-black/80">{description}</p>
+        <p className="line-clamp-3 text-sm font-light text-black/80">
+          {description}
+        </p>
       </div>
       <Artist name={artist.name} image={artist.image} />
     </div>

@@ -1,8 +1,9 @@
 import { CollectionCard } from "@/components/Collection"
 import { Hero } from "@/components/Hero"
+import Link from "next/link"
 
 export default async function Home() {
-  const data = await fetch(`${process.env.API_URL}/collections`)
+  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`)
   const collections = await data.json()
 
   return (
@@ -16,7 +17,13 @@ export default async function Home() {
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
           {collections.map((collection) => (
-            <CollectionCard key={collection.id} {...collection} />
+            <Link
+              key={collection.id}
+              href={`/${collection.id}`}
+              className="flex flex-col gap-5"
+            >
+              <CollectionCard {...collection} />
+            </Link>
           ))}
         </div>
       </section>
