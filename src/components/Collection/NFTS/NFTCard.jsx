@@ -7,6 +7,7 @@ import React from "react"
 import { FaArrowRight, FaSpinner } from "react-icons/fa"
 import { useAuth } from "@/components/Providers/AuthProvider"
 import { sleep } from "@/lib/utils"
+import Link from "next/link"
 
 const NFTCard = ({ name, price, image }) => {
   const { user, setUser, setIsLoading, isLoading } = useAuth()
@@ -29,23 +30,25 @@ const NFTCard = ({ name, price, image }) => {
     <div className="group flex min-h-[25rem] flex-col items-center rounded-3xl shadow-xl transition-all duration-300 hover:scale-[1.02] hover:cursor-pointer lg:items-start">
       <div className="relative flex h-full w-full justify-center">
         <div className="absolute right-0 top-0 z-10 hidden h-full w-full place-content-center transition-all duration-300 ease-in-out animate-in fade-in zoom-in group-hover:grid">
-          {isLoading ? (
+          {user ? (
             <Button
-              disabled
-              variant="primary"
-              className="flex flex-row items-center gap-2"
-            >
-              Buy
-              <FaSpinner className="animate-spin" />
-            </Button>
-          ) : (
-            <Button
+              disabled={isLoading}
               onClick={handleBuy}
               className="flex flex-row items-center gap-2"
             >
-              Buy
-              <FaArrowRight />
+              Buy{" "}
+              {isLoading ? (
+                <FaSpinner className="animate-spin" />
+              ) : (
+                <FaArrowRight />
+              )}
             </Button>
+          ) : (
+            <Link href="/wallet">
+              <Button className="flex flex-row items-center gap-2">
+                Buy <FaArrowRight />
+              </Button>
+            </Link>
           )}
         </div>
         <Image src={image} alt={name} fill className="absolute"></Image>

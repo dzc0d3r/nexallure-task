@@ -1,9 +1,36 @@
+"use client"
 import Image from "next/image"
 import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
 import { Artist } from "@/components/Artist"
+import Link from "next/link"
+import { useAuth } from "@/components/Providers/AuthProvider"
+import { FaSpinner } from "react-icons/fa"
+import { sleep } from "@/lib/utils"
 
 const Hero = () => {
+  const { user, setUser, isLoading, setIsLoading } = useAuth()
+  const handleHeroBuy = async () => {
+    if (!user) return
+
+    setUser((user) => ({
+      ...user,
+      wallet: {
+        ...user.wallet,
+        nfts: [
+          ...user.wallet.nfts,
+          {
+            name: "With the stars",
+            price: 0.12,
+            image: "nfts/with_the_stars.svg",
+          },
+        ],
+      },
+    }))
+    setIsLoading(true)
+    await sleep()
+    setIsLoading(false)
+  }
   return (
     <section className="container mx-auto grid min-h-96 w-full  max-w-[90%] items-center  gap-2 rounded-3xl bg-slate-200 p-10 md:max-w-none md:grid-cols-2">
       <div className="flex flex-col items-center py-2 md:gap-1 md:py-5 lg:items-start">
@@ -18,8 +45,23 @@ const Hero = () => {
         </div>
         <Artist name="Léa Jacquot" image="artists/lea.svg" />
         <div className="flex flex-col justify-center gap-5 py-5 lg:flex-row lg:justify-start">
-          <Button variant="primary">Buy</Button>
-          <Button>See collection</Button>
+          {user ? (
+            <Button
+              onClick={handleHeroBuy}
+              variant="primary"
+              disabled={isLoading}
+            >
+              Buy{" "}
+              {isLoading ? <FaSpinner className="mx-2 animate-spin" /> : null}
+            </Button>
+          ) : (
+            <Link href={"/wallet"}>
+              <Button variant="primary">Buy</Button>
+            </Link>
+          )}
+          <Link href={"/1"}>
+            <Button>See collection</Button>
+          </Link>
         </div>
       </div>
 
