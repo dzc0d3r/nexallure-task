@@ -4,3 +4,6 @@ import { twMerge } from "tailwind-merge"
 export function merge(...inputs) {
   return twMerge(clsx(inputs))
 }
+
+export const sleep = (ms = 900) =>
+  new Promise((resolve) => setTimeout(resolve, ms))

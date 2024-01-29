@@ -1,8 +1,10 @@
 "use client"
 
 import Image from "next/image"
+import { sleep } from "@/lib/utils"
 
-import { useAuth } from "../Providers/AuthProvider"
+import { useAuth } from "@/components/Providers/AuthProvider"
+import Loading from "@/components/Loading"
 const wallets = [
   {
     name: "Metamask",
@@ -21,8 +23,9 @@ const wallets = [
   },
 ]
 const WalletCard = () => {
-  const { user, setUser } = useAuth()
-  const handleWallet = (name, address) => {
+  const { user, setUser, isLoading, setIsLoading } = useAuth()
+  const handleWallet = async (name, address) => {
+    setIsLoading(true)
     setUser((user) => ({
       ...user,
       wallet: {
@@ -32,24 +35,32 @@ const WalletCard = () => {
         nfts: [],
       },
     }))
+    await sleep()
+    setIsLoading(false)
   }
   return (
     <>
-      {wallets.map((wallet, index) => (
-        <div
-          onClick={() => handleWallet(wallet.name, wallet.address)}
-          key={index}
-          className={`${user?.wallet.type == wallet.name && "border border-blue-800"} mt-5 flex h-44 w-44 items-center justify-center rounded-2xl bg-white hover:cursor-pointer`}
-        >
-          <Image
-            src={wallet.image}
-            alt={wallet.name}
-            width={100}
-            height={100}
-            className="absolute h-24 w-24"
-          ></Image>
-        </div>
-      ))}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          {wallets.map((wallet, index) => (
+            <div
+              onClick={() => handleWallet(wallet.name, wallet.address)}
+              key={index}
+              className={`${user?.wallet.type == wallet.name && "border border-blue-800"} mt-5 flex h-44 w-44 items-center justify-center rounded-2xl bg-white hover:cursor-pointer`}
+            >
+              <Image
+                src={wallet.image}
+                alt={wallet.name}
+                width={100}
+                height={100}
+                className="absolute h-24 w-24"
+              ></Image>
+            </div>
+          ))}
+        </>
+      )}
     </>
   )
 }

@@ -5,12 +5,12 @@ import { Slot } from "@radix-ui/react-slot"
 import { merge } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 btn",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none  btn",
   {
     variants: {
       variant: {
-        default: "bg-slate-50  hover:bg-slate-100/90",
-        primary: "bg-black/90 text-white  hover:bg-black/80",
+        default: "bg-slate-50  hover:bg-slate-100",
+        primary: "bg-gray-900 text-white  hover:bg-gray-800",
       },
       size: {
         default: "h-12 px-5 py-3",
