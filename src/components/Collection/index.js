@@ -1,3 +1,4 @@
 import CollectionCard from "./CollectionCard"
-
-export { CollectionCard }
+import Hero from "./NFTS/Hero"
+import NFTCard from "./NFTS/NFTCard"
+export { CollectionCard, Hero, NFTCard }

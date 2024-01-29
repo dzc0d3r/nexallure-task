@@ -6,14 +6,15 @@ const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
-  const [nfts, setNfts] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
-        nfts,
-        setNfts,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}
